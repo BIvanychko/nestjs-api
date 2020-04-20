@@ -1,9 +1,10 @@
 import { Module } from '@nestjs/common';
-import { UsersProfilesController } from './userProfile.controller';
-import { UsersProfilesService } from './userProfile.service';
+import { UserProfileController } from './userProfile.controller';
+import { UserProfileService } from './userProfile.service';
+import { UserProfileValidator } from './userProfile.validator';
 
 @Module({
-  controllers: [UsersProfilesController],
-  providers: [UsersProfilesService]
+  controllers: [UserProfileController],
+  providers: [UserProfileService, UserProfileValidator]
 })
-export class UsersProfilesModule {}
+export class UserProfileModule {}

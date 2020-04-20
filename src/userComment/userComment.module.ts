@@ -1,9 +1,10 @@
 import { Module } from '@nestjs/common';
-import { UsersCommentsService } from './userComment.service';
-import { UsersCommentsController } from './userComment.controller';
+import { UserCommentService } from './userComment.service';
+import { UserCommentController } from './userComment.controller';
+import {UserCommentValidator} from "./userComment.validator";
 
 @Module({
-  providers: [UsersCommentsService],
-  controllers: [UsersCommentsController]
+  providers: [UserCommentService, UserCommentValidator],
+  controllers: [UserCommentController]
 })
-export class UsersCommentsModule {}
+export class UserCommentModule {}
