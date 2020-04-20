@@ -1,15 +1,19 @@
 import { Controller, Post, Body } from '@nestjs/common';
-import { IUserProfileBody } from './userProfile.model';
+import { IUserProfileBody, ICreatedUserProfileResponse } from './userProfile.interface';
 import { UserProfileValidator } from './userProfile.validator';
+import { UserProfileService } from './userProfile.service';
 
 @Controller('users_profiles')
 export class UserProfileController {
-    constructor(private readonly userProfileValidator: UserProfileValidator) {}
+    constructor(
+        private readonly userProfileValidator: UserProfileValidator,
+        private readonly userProfileService: UserProfileService
+    ) {}
 
     @Post()
-    createUserProfile(@Body() userProfileBody: IUserProfileBody) :string {
+    async createUserProfile(@Body() userProfileBody: IUserProfileBody) : Promise<ICreatedUserProfileResponse> {
         this.userProfileValidator.validateCreateInput(userProfileBody);
 
-        return `Hi! Its email: ${userProfileBody.email}, active:${userProfileBody.active}`;
+        return await this.userProfileService.createUserProfile(userProfileBody);
     }
 }

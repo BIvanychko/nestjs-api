@@ -1,15 +1,19 @@
-import {Controller, Post, Body, BadRequestException} from '@nestjs/common';
-import { IUserCommentBody } from './userComment.model';
+import {Controller, Post, Body } from '@nestjs/common';
+import { IUserCommentBody, ICreatedUserCommentResponse } from './userComment.interface';
 import { UserCommentValidator } from './userComment.validator'
+import { UserCommentService } from './userComment.service';
 
 @Controller('users_comments')
 export class UserCommentController {
-    constructor(private readonly userCommmentValidator: UserCommentValidator) {}
+    constructor(
+        private readonly userCommmentValidator: UserCommentValidator,
+        private readonly userCommentService: UserCommentService
+        ) {}
 
     @Post()
-    createUserComment(@Body() userCommentBody: IUserCommentBody) : string {
+     async createUserComment(@Body() userCommentBody: IUserCommentBody) : Promise<ICreatedUserCommentResponse> {
         this.userCommmentValidator.validateCreateInput(userCommentBody);
 
-        return `Hi! Its ok)`;
+        return await this.userCommentService.createUserCommment(userCommentBody);
     }
 }

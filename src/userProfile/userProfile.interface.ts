@@ -6,3 +6,8 @@ export interface IUserProfileBody {
     firstName: string,
     lastName: string
 }
+
+export interface ICreatedUserProfileResponse {
+    userId: number,
+    profileId: number
+}

@@ -3,3 +3,7 @@ export interface IUserCommentBody {
     profileId: number,
     comment: string
 }
+
+export interface ICreatedUserCommentResponse {
+    id: number
+}
