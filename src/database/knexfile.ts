@@ -1,3 +1,5 @@
+import * as path from 'path';
+
 module.exports = {
     client: 'postgresql',
     connection: {
@@ -11,6 +13,8 @@ module.exports = {
         min: 1,
         max: 5
     },
-    migrations: {tableName: 'knex_migrations'},
-    seeds: {tableName: 'knex_seeds'}
+    migrations: {
+        directory: path.join(__dirname, 'migrations'),
+        tableName: 'migrations'
+    }
 };
