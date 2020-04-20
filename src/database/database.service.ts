@@ -1,8 +1,6 @@
-import { Injectable } from '@nestjs/common';
 import { Model } from 'objection';
 import * as Knex from 'knex';
 
-@Injectable()
 export class DatabaseService {
     constructor() {
         const knex = Knex({
