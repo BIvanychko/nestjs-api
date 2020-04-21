@@ -11,3 +11,10 @@ export interface ICreatedUserProfileResponse {
     userId: number,
     profileId: number
 }
+
+export interface IUserUpsertData {
+    email: string,
+    active: boolean,
+    ban: boolean
+    profileId: number
+}

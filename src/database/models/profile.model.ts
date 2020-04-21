@@ -1,5 +1,6 @@
 import { Model } from 'objection';
 import {Injectable} from "@nestjs/common";
+import { IProfileUpsertData } from '../../interfaces/profile.interface';
 
 @Injectable()
 export class Profile extends Model {
@@ -7,9 +8,11 @@ export class Profile extends Model {
         return 'profiles';
     }
 
-    async createProfile() {
-        await Profile.fromJson({ firstName: 'Jennifer', lastName: 'ddfdf', nickName: 'fddfdfdfdf' })
-            .$query()
-            .insert();
+    async createProfile(profile: IProfileUpsertData) {
+        return await Profile.fromJson({
+            firstName: profile.firstName,
+            lastName: profile.lastName,
+            nickName: profile.nickName
+        }).$query().insert();
     }
 }
