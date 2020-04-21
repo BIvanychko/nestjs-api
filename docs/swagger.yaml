@@ -1,0 +1,100 @@
+swagger: '2.0'
+info:
+  title: NestJs Api
+  version: '1.0'
+definitions:
+  createUserProfile:
+    description: create user profile body
+    type: object
+    required: [email, active, ban, firstName, lastName, nickName]
+    properties:
+      email:
+        type: string
+      active:
+        type: boolean
+      ban:
+        type: boolean
+      nickName:
+        type: string
+      firstName:
+        type: string
+      lastName:
+        type: string
+  createUserComment:
+    description: create user comment body
+    type: object
+    required: [userId, profileId, comment]
+    properties:
+      userId:
+        type: number
+      profileId:
+        type: number
+      comment:
+        type: string
+  createUserProfileResponse:
+    type: object
+    required: [userId, profileId]
+    properties:
+      userId:
+        type: number
+      profileId:
+        type: number
+  createUserCommentResponse:
+    type: object
+    required: [id]
+    properties:
+      id:
+        type: number
+  errorResponse:
+    type: object
+    required: [statusCode, message]
+    properties:
+      statusCode:
+        type: number
+      message:
+        type: string
+paths:
+  /users:
+    post:
+      operationId: createUserProfile
+      summary: create user and profile
+      produces:
+        - application/json
+      parameters:
+        - name: body
+          in: body
+          required: true
+          schema:
+            $ref: "#/definitions/createUserProfile"
+      responses:
+        '201':
+          description: create user profile response
+          schema:
+            $ref: "#/definitions/createUserProfileResponse"
+        '400':
+          description: error response
+          schema:
+            $ref: "#/definitions/errorResponse"
+  /user_comments:
+    post:
+      operationId: createUserComment
+      summary: create user and profile
+      produces:
+        - application/json
+      parameters:
+        - name: body
+          in: body
+          required: true
+          schema:
+            $ref: "#/definitions/createUserComment"
+      responses:
+        '201':
+          description: create user comment response
+          schema:
+            $ref: "#/definitions/createUserCommentResponse"
+        '400':
+          description: error response
+          schema:
+            $ref: "#/definitions/errorResponse"
+consumes:
+  - application/json

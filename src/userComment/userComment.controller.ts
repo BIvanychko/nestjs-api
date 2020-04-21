@@ -3,7 +3,7 @@ import { IUserCommentBody, ICreatedUserCommentResponse } from '../interfaces/use
 import { UserCommentValidator } from './userComment.validator'
 import { UserCommentService } from './userComment.service';
 
-@Controller('users_comments')
+@Controller('user_comments')
 export class UserCommentController {
     constructor(
         private readonly userCommmentValidator: UserCommentValidator,
