@@ -1,17 +1,18 @@
 import { Model } from 'objection';
 import * as Knex from 'knex';
+import {Injectable} from "@nestjs/common";
+import { IDbConfig } from '../interfaces/config.inteface';
 
+@Injectable()
 export class DatabaseService {
-    constructor() {
+    constructor(
+       private readonly dbConfig: IDbConfig
+    ) {}
+
+    initDb() : void {
         const knex = Knex({
             client: 'pg',
-            connection: {
-                host: 'localhost',
-                port: 5432,
-                database: 'test_db',
-                user: 'postgres',
-                password: ''
-            },
+            connection: this.dbConfig
         });
         Model.knex(knex);
     }

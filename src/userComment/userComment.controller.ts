@@ -1,5 +1,5 @@
 import {Controller, Post, Body } from '@nestjs/common';
-import { IUserCommentBody, ICreatedUserCommentResponse } from './userComment.interface';
+import { IUserCommentBody, ICreatedUserCommentResponse } from '../interfaces/userComment.interface';
 import { UserCommentValidator } from './userComment.validator'
 import { UserCommentService } from './userComment.service';
 

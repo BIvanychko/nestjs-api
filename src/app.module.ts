@@ -3,7 +3,7 @@ import { UserProfileModule } from './userProfile/userProfile.module';
 import { UserCommentModule } from './userComment/userComment.module';
 
 @Module({
-  imports: [UserProfileModule, UserCommentModule],
+  imports: [UserProfileModule, UserCommentModule]
 })
 
 export class AppModule {}

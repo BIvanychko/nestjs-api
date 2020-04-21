@@ -1,6 +1,6 @@
 import { Injectable, BadRequestException } from '@nestjs/common';
 import * as Joi from '@hapi/joi';
-import { IUserCommentBody } from './userComment.interface';
+import { IUserCommentBody } from '../interfaces/userComment.interface';
 
 @Injectable()
 export class UserCommentValidator {

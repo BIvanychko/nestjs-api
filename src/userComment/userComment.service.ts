@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { IUserCommentBody, ICreatedUserCommentResponse } from './userComment.interface';
+import { IUserCommentBody, ICreatedUserCommentResponse } from '../interfaces/userComment.interface';
 
 @Injectable()
 export class UserCommentService {

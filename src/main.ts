@@ -1,10 +1,17 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { DatabaseService } from './database/database.service';
+import { ConfigService } from './config/config.service';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
-  new DatabaseService();
-  await app.listen(3000);
+
+  const dbConfig = ConfigService.getDbConfig();
+  const webServerConfig = ConfigService.getWebServerConfig();
+
+  const databaseService = new DatabaseService(dbConfig);
+  databaseService.initDb();
+
+  await app.listen(webServerConfig.port);
 }
 bootstrap();

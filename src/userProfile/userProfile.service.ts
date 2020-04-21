@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { IUserProfileBody, ICreatedUserProfileResponse } from './userProfile.interface';
+import { IUserProfileBody, ICreatedUserProfileResponse } from '../interfaces/userProfile.interface';
 
 @Injectable()
 export class UserProfileService {

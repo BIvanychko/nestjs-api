@@ -1,5 +1,5 @@
 import { Controller, Post, Body } from '@nestjs/common';
-import { IUserProfileBody, ICreatedUserProfileResponse } from './userProfile.interface';
+import { IUserProfileBody, ICreatedUserProfileResponse } from '../interfaces/userProfile.interface';
 import { UserProfileValidator } from './userProfile.validator';
 import { UserProfileService } from './userProfile.service';
 
