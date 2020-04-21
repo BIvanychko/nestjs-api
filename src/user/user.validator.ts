@@ -3,7 +3,7 @@ import * as Joi from '@hapi/joi';
 import { IUserProfileBody } from '../interfaces/userProfile.interface';
 
 @Injectable()
-export class UserProfileValidator {
+export class UserValidator {
     validateCreateInput(createUserProfileBody: IUserProfileBody): void {
         const schema = Joi.object({
             email: Joi.string().required()

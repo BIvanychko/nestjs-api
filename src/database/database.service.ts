@@ -5,14 +5,10 @@ import { IDbConfig } from '../interfaces/config.inteface';
 
 @Injectable()
 export class DatabaseService {
-    constructor(
-       private readonly dbConfig: IDbConfig
-    ) {}
-
-    initDb() : void {
+    initDb(dbConfig: IDbConfig) : void {
         const knex = Knex({
             client: 'pg',
-            connection: this.dbConfig
+            connection: dbConfig
         });
         Model.knex(knex);
     }

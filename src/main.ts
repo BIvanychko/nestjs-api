@@ -9,8 +9,8 @@ async function bootstrap() {
   const dbConfig = ConfigService.getDbConfig();
   const webServerConfig = ConfigService.getWebServerConfig();
 
-  const databaseService = new DatabaseService(dbConfig);
-  databaseService.initDb();
+  const databaseService = new DatabaseService();
+  databaseService.initDb(dbConfig);
 
   await app.listen(webServerConfig.port);
 }

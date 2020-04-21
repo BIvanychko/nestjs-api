@@ -1,13 +1,13 @@
 import { Controller, Post, Body } from '@nestjs/common';
 import { IUserProfileBody, ICreatedUserProfileResponse } from '../interfaces/userProfile.interface';
-import { UserProfileValidator } from './userProfile.validator';
-import { UserProfileService } from './userProfile.service';
+import { UserValidator } from './user.validator';
+import { UserService } from './user.service';
 
 @Controller('users_profiles')
-export class UserProfileController {
+export class UserController {
     constructor(
-        private readonly userProfileValidator: UserProfileValidator,
-        private readonly userProfileService: UserProfileService
+        private readonly userProfileValidator: UserValidator,
+        private readonly userProfileService: UserService
     ) {}
 
     @Post()
