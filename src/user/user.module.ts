@@ -8,6 +8,7 @@ import { ProfileModule } from '../profile/profile.module';
 @Module({
   controllers: [UserController],
   providers: [UserService, UserValidator],
-  imports: [DatabaseModule, ProfileModule]
+  imports: [DatabaseModule, ProfileModule],
+  exports: [UserService]
 })
 export class UserModule {}

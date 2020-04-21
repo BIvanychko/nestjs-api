@@ -14,4 +14,8 @@ export class User extends Model {
             profileId: user.profileId
         }).$query().insert();
     }
+
+    async getUserById(userId: number) {
+        return await User.query().findById(userId);
+    }
 }

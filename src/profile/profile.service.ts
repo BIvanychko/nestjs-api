@@ -11,4 +11,8 @@ export class ProfileService {
     async createProfile(profile: IProfileUpsertData) {
         return await this.profileModel.createProfile(profile);
     }
+
+    async getProfileById(profileId: number) {
+        return await this.profileModel.getProfileById(profileId);
+    }
 }

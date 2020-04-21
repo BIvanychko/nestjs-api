@@ -7,3 +7,9 @@ export interface IUserCommentBody {
 export interface ICreatedUserCommentResponse {
     id: number
 }
+
+export interface IUSerCommentUpsertData {
+    userId: number,
+    profileId: number,
+    comment: string
+}

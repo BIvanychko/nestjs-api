@@ -15,4 +15,8 @@ export class Profile extends Model {
             nickName: profile.nickName
         }).$query().insert();
     }
+
+    async getProfileById(profileId: number) {
+        return await Profile.query().findById(profileId);
+    }
 }

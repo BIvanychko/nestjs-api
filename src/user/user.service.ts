@@ -31,4 +31,8 @@ export class UserService {
 
         return {userId: user.$id(), profileId: profileId}
     }
+
+    async getUserById(userId: number) {
+        return await this.userModel.getUserById(userId);
+    }
 }
