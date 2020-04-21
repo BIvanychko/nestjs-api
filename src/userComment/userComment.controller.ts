@@ -14,6 +14,9 @@ export class UserCommentController {
      async createUserComment(@Body() userCommentBody: IUserCommentBody) : Promise<ICreatedUserCommentResponse> {
         this.userCommmentValidator.validateCreateInput(userCommentBody);
 
-        return await this.userCommentService.createUserCommment(userCommentBody);
+        const response = await this.userCommentService.createUserCommment(userCommentBody);
+        console.log(`Response: ${JSON.stringify(response)}`)
+
+        return response;
     }
 }

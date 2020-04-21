@@ -12,7 +12,9 @@ export class UserService {
 
     async createUserProfile(userProfile: IUserProfileBody) : Promise<ICreatedUserProfileResponse> {
         if(userProfile.active && userProfile.ban || !userProfile.active && !userProfile.ban) {
-            throw new BadRequestException('Ban and Active cannot be equal');
+            const errorMessage = 'Ban and Active cannot be equal';
+            console.error(`Create user profile: ${errorMessage}`);
+            throw new BadRequestException(errorMessage);
         }
 
         const profile = await this.profileService.createProfile({

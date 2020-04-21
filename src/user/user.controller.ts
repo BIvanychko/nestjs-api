@@ -14,6 +14,9 @@ export class UserController {
     async createUserProfile(@Body() userProfileBody: IUserProfileBody) : Promise<ICreatedUserProfileResponse> {
         this.userProfileValidator.validateCreateInput(userProfileBody);
 
-        return await this.userProfileService.createUserProfile(userProfileBody);
+        const response = await this.userProfileService.createUserProfile(userProfileBody);
+        console.log(`Response: ${JSON.stringify(response)}`);
+
+        return response;
     }
 }

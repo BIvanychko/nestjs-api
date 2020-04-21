@@ -14,13 +14,18 @@ export class UserCommentService {
 
     async createUserCommment(userComment: IUserCommentBody): Promise<ICreatedUserCommentResponse> {
         const user = await this.userService.getUserById(userComment.userId);
+        let errorMessage;
         if(!user) {
-            throw new NotFoundException('User does not exist');
+            errorMessage = 'User does not exist';
+            console.error(`Create user comment: ${errorMessage}`);
+            throw new NotFoundException(errorMessage);
         }
 
         const profile = await this.profileService.getProfileById(userComment.profileId);
         if(!profile) {
-            throw new NotFoundException('Profile does not exist');
+            errorMessage = 'Profile does not exist';
+            console.error(`Create user comment: ${errorMessage}`);
+            throw new NotFoundException(errorMessage);
         }
 
         const createdUserComment = await this.userCommentModel.createUserComment(userComment);
